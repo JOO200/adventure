@@ -63,6 +63,7 @@ public final class StandardTags {
   private static final TagResolver FONT = TagResolver.resolver(FontTag.FONT, FontTag::create);
   private static final TagResolver GRADIENT = TagResolver.resolver(GradientTag.GRADIENT, GradientTag::create);
   private static final TagResolver RAINBOW = TagResolver.resolver(RainbowTag.RAINBOW, RainbowTag::create);
+  private static final TagResolver TRANSITION = TagResolver.resolver(TransitionTag.TRANSITION, TransitionTag::create);
   private static final TagResolver RESET = TagResolver.resolver(RESET_TAG, ParserDirective.RESET);
   private static final TagResolver ALL = TagResolver.builder()
       .resolvers(
@@ -76,6 +77,7 @@ public final class StandardTags {
         DECORATION,
         GRADIENT,
         RAINBOW,
+        TRANSITION,
         RESET
       )
       .build();
@@ -172,6 +174,16 @@ public final class StandardTags {
    */
   public static TagResolver rainbow() {
     return RAINBOW;
+  }
+
+  /**
+   * Get a resolver for the {@value TransitionTag#TRANSITION} tag.
+   *
+   * @return a resolver for the {@value TransitionTag#TRANSITION} tag
+   * @since 4.10.0
+   */
+  public static TagResolver transition() {
+    return TRANSITION;
   }
 
   /**

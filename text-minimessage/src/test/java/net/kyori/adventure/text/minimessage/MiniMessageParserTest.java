@@ -1711,4 +1711,15 @@ public class MiniMessageParserTest extends TestBase {
 
     assertEquals(expected, tree.toString());
   }
+
+  @Test
+  void testTransition() {
+    final TextColor[] colors = new TextColor[] {BLACK, color(0x808080), WHITE, color(0x808080), BLACK};
+    final float[] phases = new float[] {-1, 0.5f, 0, 0.5f, 1};
+    for (int i = 0; i < colors.length; i++) {
+      final String input = "<transition:white:black:" + phases[i] + ">Hello World";
+      final Component expected = Component.text("", colors[i]).append(text("Hello World"));
+      this.assertParsedEquals(expected, input);
+    }
+  }
 }
